@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Style for the list container */
+    .list-container {
+      border: 5px solid;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-left: 25%;
+      margin-right: 25%;
+    }
+    /* Style for each list item */
+    .list-item {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+      margin-left: 35%;
+      margin-right: 35%;
+      text-align: center;
+    }
+    /* Style for the label */
+    .list-item label {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+    /* Style for the on/off div */
+    .on-off-div {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #eee;
+    }
+    /* Style for the on state */
+    .on {
+      background-color: green;
+    }
+
+
+    img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+
+    .img-container {
+      position: absolute; 
+      margin-left: 30%;
+    }
+
+    .img-container2 {
+      position: absolute; 
+      margin-left: 55%;
+    }
+
+    .invisible {
+      display: none;
+    }
+
+    
+  </style>
+
+  <script>
+    function updateLabels() {
+      var xhttp = new XMLHttpRequest();
+      
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+          for (let i = 1; i < 10; i++) {
+
+            if (i <= 6) {
+              if (this.responseText.charAt(i-1) == '0') {
+                document.getElementById("i" + i.toString()).classList.add("invisible");
+              } else {
+                document.getElementById("i" + i.toString()).classList.remove("invisible");
+              }
+
+            }
+
+            if (this.responseText.charAt(i-1) == '1') {
+              document.getElementById("div" + i.toString()).classList.add("on");
+            } else {
+              document.getElementById("div" + i.toString()).classList.remove("on");
+            }
+          } 
+        }
+      };
+      xhttp.open("GET", "http://localhost:3333/api/in?", true);
+      xhttp.send();
+    }
+    //call the function after 200ms
+    setInterval(updateLabels, 16);
+  </script>
+
+</head>
+<body>
+  <div class="list-container">
+    <div class="list-item">
+      <label>Touchinput 1</label>
+      <div class="on-off-div" id="div1" onclick="return false"></div>
+    </div>
+    <div class="list-item">
+      <label >Touchinput 2</label>
+      <div class="on-off-div" id="div2" onclick="return false"></div>
+    </div>
+    <div class="list-item">
+      <label >Touchinput 3</label>
+      <div class="on-off-div" id="div3" onclick="return false"></div>
+    </div>
+    <div class="list-item">
+      <label>Touchinput 4</label>
+      <div class="on-off-div" id="div4" onclick="return false"></div>
+    </div>
+    <div class="list-item">
+      <label>Touchinput 5</label>
+      <div class="on-off-div" id="div5" onclick="return false"></div>
+    </div>
+    <div class="list-item">
+      <label>Touchinput 6</label>
+      <div class="on-off-div" id="div6" onclick="return false"></div>
+    </div>
+    <div class="list-item">
+      <label>Touchinput 7</label>
+      <div class="on-off-div" id="div7" onclick="return false"></div>
+    </div>
+    <div class="list-item">
+      <label>Touchinput 8</label>
+      <div class="on-off-div" id="div8" onclick="return false"></div>
+    </div>
+    <div class="list-item">
+      <label>Touchinput 9</label>
+      <div class="on-off-div" id="div9" onclick="return false"></div>
+  </div>
+  </div>
+  <div class="img-container">
+    <img  style="z-index: 1;" src="/image?name=hand" alt="Hand image">
+  </div>
+  <div class="img-container">
+    <img id="i1" style="z-index: 2;" src="/image?name=1_on" alt="Hand image">
+  </div>
+  
+  <div class="img-container">
+    <img id="i2" style="z-index: 3;" src="/image?name=2_on" alt="Hand image">
+  </div>
+
+  <div class="img-container">
+    <img id="i3" style="z-index: 4;" src="/image?name=3_on" alt="Hand image">
+  </div>
+
+  <div class="img-container">
+    <img id="i4" style="z-index: 5;" src="/image?name=4_on" alt="Hand image">
+  </div>
+
+  <div class="img-container2">
+    <img style="z-index: 1;" src="/image?name=hand" alt="Hand image">
+  </div>
+
+  <div class="img-container2">
+    <img id="i5" style="z-index: 2;" src="/image?name=5_on" alt="Hand image">
+  </div>
+
+  <div class="img-container2">
+    <img id="i6" style="z-index: 3;" src="/image?name=6_on" alt="Hand image">
+  </div>
+
+</body>
+    

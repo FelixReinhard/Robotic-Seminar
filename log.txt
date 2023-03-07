@@ -1,0 +1,6 @@
+192.168.43.253:1269
+Waiting for Client 0...
+Got connection tcp
+Start Auth...
+Auth Ok!
+Registered Output!
